@@ -14,7 +14,7 @@ class AdController extends Controller
      */
     public function index()
     {
-        return Ad::with('photos')->orderBy('id DESC')->paginate(2);
+        return Ad::with('photos', 'user')->orderBy('id DESC')->paginate(2);
     }
 
     /**

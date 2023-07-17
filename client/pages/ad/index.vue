@@ -44,12 +44,14 @@ async function handleShowAd(ad: Ad) {
     <div>
         <h2>Список объявлений:</h2>
     </div>
-    <a v-for="(ad) in ads" href="#" @click.prevent="handleShowAd(ad)" style="display: block;">
-        {{ ad.title }}
+
+    <div v-for="(ad) in ads">
+        <a href="#" @click.prevent="handleShowAd(ad)">{{ ad.title }}</a> ({{ ad?.user?.name }})
         <img :src="getPhotoUrl(ad.photos[0].url)"
+             @click.prevent="handleShowAd(ad)"
              style="display: block; width: 100px; margin-bottom: 15px;"
         >
-    </a>
+    </div>
 
     <ul v-if="adsData?.links && adsData.links.length > 3" style="list-style-type: none;">
         <li v-for="(link) in adsData?.links" style="display: inline-block; margin-left: 10px;">
